@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // updateData
 import axios from 'axios';
 import { showAlert } from './alerts';
@@ -5,7 +7,7 @@ import { showAlert } from './alerts';
 // type is either 'password' or 'data'
 export const updateSettings = async (data, type) => {
   try {
-    const defaultUrl = 'http://localhost:3000/api/v1/users/';
+    const defaultUrl = '/api/v1/users/';
     const url =
       type === 'password'
         ? `${defaultUrl}updateMyPassword`

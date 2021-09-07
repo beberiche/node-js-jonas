@@ -8,6 +8,7 @@ const xssClean = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const csp = require('express-csp');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -135,12 +136,14 @@ app.use(
   })
 );
 
+app.use(compression());
+
 // Test middleware
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  // if (req.cookies) console.log(req.cookies);
-  next();
-});
+// app.use((req, res, next) => {
+//   req.requestTime = new Date().toISOString();
+//   if (req.cookies) console.log(req.cookies);
+//   next();
+// });
 
 // ROUTES (MOUNT ROUTER)
 app.use('/', viewRouter);
